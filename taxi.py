@@ -20,6 +20,10 @@ class Taxi(Car):
                                                              self.current_fare_distance,
                                                              self.price_per_km)
 
+
+    def get_price_per_km(self):
+        return self.price_per_km
+
     def get_fare(self):
         """Return the price for the taxi trip."""
         return self.price_per_km * self.current_fare_distance
