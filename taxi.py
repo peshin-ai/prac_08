@@ -2,17 +2,23 @@
 CP1404/CP5632 Practical
 Car class
 """
+from car import Car
 
 
-class Taxi():
+class Taxi(Car):
     """Specialised version of a Car that includes fare costs."""
 
-    def __init__(self, name, fuel, price_per_km):
+    def __init__(self, name, fuel):
         """Initialise a Taxi instance, based on parent class Car."""
-        self.name = name
-        self.fuel = fuel
-        self.price_per_km = price_per_km
+        super().__init__(name, fuel)
         self.current_fare_distance = 0
+        self.price_per_km = 1.23
+
+    def __str__(self):
+        """Return a string like a Car but with current fare distance."""
+        return "{}, {}km on current fare, ${:.2f}/km".format(super().__str__(),
+                                                             self.current_fare_distance,
+                                                             self.price_per_km)
 
     def get_fare(self):
         """Return the price for the taxi trip."""
@@ -22,12 +28,13 @@ class Taxi():
         """Begin a new fare."""
         self.current_fare_distance = 0
 
+    # add function to reset the
+    def set_meter(self):
+        self.current_fare_distance = super().set_odometer()
+        return self.current_fare_distance
+
     def drive(self, distance):
         """Drive like parent Car but calculate fare distance as well."""
-        distance_driven = distance
+        distance_driven = super().drive(distance)
         self.current_fare_distance += distance_driven
         return distance_driven
-
-    def __str__(self):
-        """Return a string like a Car but with current fare distance."""
-        return "{} {} {}".format(self.name, self.fuel, self.start_fare())
