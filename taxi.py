@@ -28,13 +28,9 @@ class Taxi(Car):
         """Begin a new fare."""
         self.current_fare_distance = 0
 
-    # add function to reset the
-    def set_meter(self):
-        self.current_fare_distance = super().set_odometer()
-        return self.current_fare_distance
-
     def drive(self, distance):
         """Drive like parent Car but calculate fare distance as well."""
+        self.current_fare_distance = super().set_odometer()
         distance_driven = super().drive(distance)
         self.current_fare_distance += distance_driven
         return distance_driven
