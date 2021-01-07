@@ -12,7 +12,7 @@ class Taxi(Car):
         """Initialise a Taxi instance, based on parent class Car."""
         super().__init__(name, fuel)
         self.current_fare_distance = 0
-        self.price_per_km = 1.23
+        self.price_per_km = 1.20
 
     def __str__(self):
         """Return a string like a Car but with current fare distance."""
