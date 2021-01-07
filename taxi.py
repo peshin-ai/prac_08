@@ -20,7 +20,6 @@ class Taxi(Car):
                                                              self.current_fare_distance,
                                                              self.price_per_km)
 
-
     def get_price_per_km(self):
         return self.price_per_km
 
