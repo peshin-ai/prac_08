@@ -19,13 +19,17 @@ class Car:
 
     def __str__(self):
         """Return a string representation of a Car object."""
-        return "{}, fuel={}".format(self.name, self.fuel)
+        return "{}, fuel={}, odo={}".format(self.name, self.fuel, self.odometer)
 
 
 
     def add_fuel(self, amount):
         """Add amount to the car's fuel."""
         self.fuel += amount
+
+    def set_odometer(self):
+        self.odometer = 0
+        return self.odometer
 
     def drive(self, distance):
         """Drive the car a given distance.
@@ -35,15 +39,11 @@ class Car:
         """
         if distance > self.fuel:
             distance = self.fuel
+            self.odometer += distance
             self.fuel = 0
         else:
             self.fuel -= distance
             self.odometer += distance
         return distance
-
-    # reset the odometer
-    def set_odometer(self):
-        self.odometer = 0
-        return self.odometer
 
 
