@@ -13,6 +13,7 @@ class Taxi(Car):
         super().__init__(name, fuel)
         self.current_fare_distance = 0
         self.price_per_km = 1.20
+        self.display = 0
 
     def __str__(self):
         """Return a string like a Car but with current fare distance."""
@@ -25,7 +26,11 @@ class Taxi(Car):
 
     def get_fare(self):
         """Return the price for the taxi trip."""
+        self.display = self.price_per_km * self.current_fare_distance
         return self.price_per_km * self.current_fare_distance
+
+    def display_fee(self):
+        return self.display
 
     def start_fare(self):
         """Begin a new fare."""
